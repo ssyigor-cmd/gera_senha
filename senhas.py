@@ -3,38 +3,71 @@ import os
 from datetime import datetime
 
 class FilaSenhas:
-    def __init__(self):
-        self.fila = []
-        self.atendidas = []
-        self.contador = 1
+    def __init__(self, fila=None, atendidas=None, contador=1, ultima_chamada=None):
+        self.fila = fila if fila is not None else []
+        self.atendidas = atendidas if atendidas is not None else []
+        self.contador = contador
+        self.ultima_chamada = ultima_chamada  # Guarda a última senha chamada
     
     def gerar_senha(self, tipo="Normal"):
+        """
+        Gera nova senha.
+        - Prioritários entram na frente da fila (depois dos outros prioritários).
+        - Normais entram no final.
+        """
         prefixo = "P" if tipo == "Prioritário" else "N"
         numero = str(self.contador).zfill(3)
         senha = f"{prefixo}{numero}"
         
-        self.fila.append({
+        nova_senha = {
             "senha": senha,
             "tipo": tipo,
             "horario": datetime.now().strftime("%H:%M:%S"),
             "status": "Aguardando"
-        })
+        }
+        
+        # Lógica de prioridade: Prioritários entram na frente, mas depois dos já existentes
+        if tipo == "Prioritário":
+            insert_index = 0
+            for i, s in enumerate(self.fila):
+                if s["tipo"] == "Prioritário":
+                    insert_index = i + 1  # Vai inserir depois do último prioritário
+            self.fila.insert(insert_index, nova_senha)
+        else:
+            self.fila.append(nova_senha)
+        
         self.contador += 1
         return senha
     
     def chamar_proximo(self):
+        """Remove e retorna a primeira senha da fila."""
         if not self.fila:
             return None
-        
-        prioritarios = [s for s in self.fila if s["tipo"] == "Prioritário"]
-        normais = [s for s in self.fila if s["tipo"] == "Normal"]
-        self.fila = prioritarios + normais
         
         senha = self.fila.pop(0)
         senha["status"] = "Atendido"
         senha["horario_atendimento"] = datetime.now().strftime("%H:%M:%S")
         self.atendidas.append(senha)
+        self.ultima_chamada = senha  # Guarda para re-chamar
         return senha
+    
+    def rechamar_ultimo(self):
+        """Retorna a última senha chamada (sem removê-la da fila, pois já foi atendida)."""
+        return self.ultima_chamada
+    
+    def remover_por_senha(self, codigo_senha):
+        """Remove uma senha específica da fila (ex: paciente desistiu)."""
+        for i, s in enumerate(self.fila):
+            if s["senha"] == codigo_senha:
+                return self.fila.pop(i)
+        return None
+    
+    def resetar_dia(self):
+        """Reseta a fila, o histórico e o contador para 1."""
+        self.fila = []
+        self.atendidas = []
+        self.contador = 1
+        self.ultima_chamada = None
     
     def listar_fila(self):
         return self.fila
@@ -44,3 +77,23 @@ class FilaSenhas:
     
     def total_atendidos(self):
         return len(self.atendidas)
+    
+    def exportar_relatorio(self):
+        """Gera um arquivo .txt com o relatório do dia (senhas atendidas)."""
+        if not self.atendidas:
+            return None
+        
+        data_atual = datetime.now().strftime("%Y-%m-%d")
+        nome_arquivo = f"relatorio_atendidos_{data_atual}.txt"
+        
+        pasta = os.path.dirname(os.path.abspath(__file__))
+        caminho_completo = os.path.join(pasta, nome_arquivo)
+        
+        with open(caminho_completo, "w", encoding="utf-8") as f:
+            f.write(f"RELATÓRIO DE ATENDIMENTOS - {data_atual}\n")
+            f.write("=" * 40 + "\n\n")
+            for idx, s in enumerate(self.atendidas, 1):
+                f.write(f"{idx}º - Senha: {s['senha']} | Tipo: {s['tipo']} | Atendido às: {s.get('horario_atendimento', 'N/A')}\n")
+            f.write(f"\nTotal de atendimentos: {len(self.atendidas)}")
+        
+        return caminho_completo
