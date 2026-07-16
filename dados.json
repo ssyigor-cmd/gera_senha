@@ -1,0 +1,39 @@
+{
+  "fila": [
+    {
+      "senha": "N002",
+      "tipo": "Normal",
+      "horario": "10:53:19",
+      "status": "Aguardando"
+    },
+    {
+      "senha": "N003",
+      "tipo": "Normal",
+      "horario": "10:53:21",
+      "status": "Aguardando"
+    },
+    {
+      "senha": "P005",
+      "tipo": "Prioritário",
+      "horario": "10:54:03",
+      "status": "Aguardando"
+    }
+  ],
+  "atendidas": [
+    {
+      "senha": "N001",
+      "tipo": "Normal",
+      "horario": "10:53:00",
+      "status": "Atendido",
+      "horario_atendimento": "10:53:12"
+    },
+    {
+      "senha": "P004",
+      "tipo": "Prioritário",
+      "horario": "10:53:23",
+      "status": "Atendido",
+      "horario_atendimento": "10:53:29"
+    }
+  ],
+  "contador": 6
+}

@@ -1,0 +1,12 @@
+# Pastas geradas pelo PyInstaller
+dist/
+build/
+*.spec
+
+# Arquivos temporários do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Dados sensíveis (ou que não devem subir)
+dados.json
