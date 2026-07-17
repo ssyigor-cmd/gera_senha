@@ -1,0 +1,13 @@
+{
+  "prefixo_normal": "N",
+  "prefixo_prioritario": "P",
+  "som_ativado": false,
+  "volume": 0.5,
+  "cor_tela": "#000000",
+  "cor_texto": "#00FF00",
+  "fonte_tamanho": 120,
+  "tts_ativado": true,
+  "impressora_ativada": false,
+  "impressora_nome": "\\\\DESKTOP-PCDFNGR\\brother",
+  "tema": "dark"
+}
