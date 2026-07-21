@@ -1,7 +1,7 @@
 {
   "prefixo_normal": "N",
   "prefixo_prioritario": "P",
-  "som_ativado": false,
+  "som_ativado": true,
   "volume": 0.5,
   "cor_tela": "#000000",
   "cor_texto": "#00FF00",

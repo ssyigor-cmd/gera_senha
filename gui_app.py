@@ -1,3 +1,4 @@
+from banco import obter_caminho_absoluto
 from config import carregar_config, salvar_config
 from tts import falar
 from impressao import imprimir_senha
@@ -204,7 +205,7 @@ class SistemaSenhasGUI:
     # ========== FUNÇÕES DOS BOTÕES ==========
 
     def gerar_normal(self):
-        senha = self.sistema.gerar_senha("Normal")
+        senha = self.sistema.gerar_senha("Normal", self.config)
 
         if self.config.get("impressora_ativada", False):
             from impressao import imprimir_senha
@@ -216,7 +217,7 @@ class SistemaSenhasGUI:
         self.atualizar_tudo()
 
     def gerar_prioritario(self):
-        senha = self.sistema.gerar_senha("Prioritário")
+        senha = self.sistema.gerar_senha("Prioritário", self.config)
 
         if self.config.get("impressora_ativada", False):
             from impressao import imprimir_senha
@@ -249,7 +250,8 @@ class SistemaSenhasGUI:
                     
         ultimo = self.sistema.rechamar_ultimo()
         if ultimo:
-            winsound.Beep(800, 300)
+            if self.config.get("som_ativado", True):
+                winsound.Beep(800, 300)
             
             if self.config.get("tts_ativado", True):
                 from tts import falar
@@ -422,19 +424,18 @@ class SistemaSenhasGUI:
         self.label_grafico.pack(pady=10, padx=20, fill="both", expand=True)
 
     def exibir_grafico(self, janela, atendidos):
+        """Gera e exibe o relatório em texto (sem imagem)."""
         from relatorio import gerar_grafico_atendimentos
-        from PIL import Image, ImageTk
-
         caminho = gerar_grafico_atendimentos(atendidos)
         if caminho:
-            img = Image.open(caminho)
-            img = img.resize((700, 350), Image.Resampling.LANCZOS)
-            tk_img = ImageTk.PhotoImage(img)
-            self.label_grafico.configure(image=tk_img, text="")
-            self.label_grafico.image = tk_img
+            # Abre o arquivo e mostra o conteúdo na tela
+            with open(caminho, "r", encoding="utf-8") as f:
+                conteudo = f.read()
+            # Exibe em uma caixa de texto simples
+            messagebox.showinfo("Relatório Gerado", f"Relatório salvo em:\n{caminho}\n\nConteúdo:\n{conteudo[:500]}...")  # Mostra só o início
+            self.label_grafico.configure(text="Relatório gerado! Verifique a pasta 'estatisticas'.")
         else:
-            self.label_grafico.configure(text="Nenhum dado para gerar gráficos.")
-
+            self.label_grafico.configure(text="Nenhum dado para gerar relatório.") 
 
 if __name__ == "__main__":
     app = SistemaSenhasGUI()

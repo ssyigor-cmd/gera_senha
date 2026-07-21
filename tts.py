@@ -3,13 +3,14 @@ import threading
 import time
 
 def falar(texto):
-    """Fala o texto usando pyttsx3, garantindo que funcione várias vezes."""
+    """Fala o texto usando pyttsx3, recriando a engine a cada chamada."""
     def _falar():
+        engine = None
         try:
             # Cria uma engine NOVA a cada chamada
             engine = pyttsx3.init()
-            engine.setProperty('rate', 150)
-            engine.setProperty('volume', 0.9)
+            engine.setProperty('rate', 150)  # Velocidade da fala
+            engine.setProperty('volume', 0.9)  # Volume
             
             # Configura voz em português (se disponível)
             try:
@@ -30,6 +31,13 @@ def falar(texto):
             
         except Exception as e:
             print(f"Erro no TTS: {e}")
+        finally:
+            # Tenta finalizar a engine para liberar recursos
+            if engine:
+                try:
+                    engine.stop()
+                except:
+                    pass
     
     # Roda em uma thread separada para não travar a interface
     thread = threading.Thread(target=_falar)

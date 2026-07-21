@@ -1,61 +1,70 @@
-import matplotlib.pyplot as plt
-from datetime import datetime
-import os
 from banco import obter_caminho_absoluto
+import os
+from datetime import datetime
 
-def gerar_grafico_atendimentos(atendidas, salvar=True):
-    """Gera gráfico de barras com atendimentos por hora"""
+def gerar_grafico_atendimentos(atendidas):
+    """
+    Gera um relatório em .txt com as estatísticas.
+    (Versão simplificada, sem dependências de imagem)
+    """
     if not atendidas:
         return None
-    
-    # Extrair horas
-    horas = []
+
+    pasta = os.path.join(obter_caminho_absoluto(), "estatisticas")
+    os.makedirs(pasta, exist_ok=True)
+
+    nome_arquivo = f"relatorio_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+    caminho = os.path.join(pasta, nome_arquivo)
+
+    # Contar por tipo
+    tipos = {}
     for s in atendidas:
-        if 'horario_atendimento' in s:
-            h = datetime.strptime(s['horario_atendimento'], "%H:%M:%S").hour
-            horas.append(h)
-    
-    if not horas:
-        return None
-    
-    # Contar frequência por hora
-    from collections import Counter
-    contagem = Counter(horas)
-    horas_ordenadas = sorted(contagem.keys())
-    valores = [contagem[h] for h in horas_ordenadas]
-    
-    # Criar gráfico
-    plt.figure(figsize=(10, 5))
-    plt.bar(horas_ordenadas, valores, color='#1F8D4D')
-    plt.xlabel('Hora do dia')
-    plt.ylabel('Número de atendimentos')
-    plt.title('Atendimentos por hora')
-    plt.xticks(range(min(horas_ordenadas), max(horas_ordenadas)+1))
-    plt.grid(axis='y', linestyle='--', alpha=0.7)
-    
-    if salvar:
-        pasta = obter_caminho_absoluto()
-        caminho = os.path.join(pasta, "relatorios")
-        os.makedirs(caminho, exist_ok=True)
-        data = datetime.now().strftime("%Y%m%d")
-        arquivo = os.path.join(caminho, f"grafico_{data}.png")
-        plt.savefig(arquivo, dpi=100, bbox_inches='tight')
-        plt.close()
-        return arquivo
-    else:
-        plt.show()
-        return None
+        tipo = s.get("tipo", "Normal")
+        tipos[tipo] = tipos.get(tipo, 0) + 1
+
+    # Contar por hora
+    horas = {}
+    for s in atendidas:
+        horario = s.get("horario_atendimento", "")
+        if horario:
+            hora = horario[:2]
+            horas[hora] = horas.get(hora, 0) + 1
+
+    with open(caminho, "w", encoding="utf-8") as f:
+        f.write("=" * 40 + "\n")
+        f.write("RELATÓRIO DE ATENDIMENTOS\n")
+        f.write(f"Gerado em: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n")
+        f.write("=" * 40 + "\n\n")
+
+        f.write(f"Total de atendimentos: {len(atendidas)}\n\n")
+
+        f.write("Por tipo:\n")
+        for tipo, qtd in tipos.items():
+            f.write(f"  - {tipo}: {qtd} ({qtd/len(atendidas)*100:.1f}%)\n")
+
+        if horas:
+            f.write("\nAtendimentos por hora:\n")
+            for hora, qtd in sorted(horas.items()):
+                f.write(f"  - {hora}:00h → {qtd} atendimentos\n")
+
+        if atendidas:
+            primeiro = atendidas[0]
+            ultimo = atendidas[-1]
+            f.write(f"\nPrimeiro atendimento: {primeiro.get('senha')} às {primeiro.get('horario_atendimento', 'N/A')}\n")
+            f.write(f"Último atendimento: {ultimo.get('senha')} às {ultimo.get('horario_atendimento', 'N/A')}\n")
+
+    return caminho
 
 def calcular_tempo_medio(atendidas):
-    """Calcula o tempo médio de espera (minutos) entre geração e atendimento"""
     tempos = []
     for s in atendidas:
-        if 'horario' in s and 'horario_atendimento' in s:
+        if "horario" in s and "horario_atendimento" in s:
             try:
-                h_geracao = datetime.strptime(s['horario'], "%H:%M:%S")
-                h_atend = datetime.strptime(s['horario_atendimento'], "%H:%M:%S")
-                diff = (h_atend - h_geracao).total_seconds() / 60.0
-                tempos.append(diff)
+                h1 = datetime.strptime(s["horario"], "%H:%M:%S")
+                h2 = datetime.strptime(s["horario_atendimento"], "%H:%M:%S")
+                diff = (h2 - h1).total_seconds() / 60
+                if diff >= 0:
+                    tempos.append(diff)
             except:
                 continue
     if tempos:

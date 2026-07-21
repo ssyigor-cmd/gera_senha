@@ -1,6 +1,9 @@
+from banco import obter_caminho_absoluto
 import json
 import os
 from datetime import datetime
+
+import config
 
 class FilaSenhas:
     def __init__(self, fila=None, atendidas=None, contador=1, ultima_chamada=None):
@@ -9,35 +12,44 @@ class FilaSenhas:
         self.contador = contador
         self.ultima_chamada = ultima_chamada  # Guarda a última senha chamada
     
-    def gerar_senha(self, tipo="Normal"):
+    def gerar_senha(self, tipo="Normal", config=None):
         """
-        Gera nova senha.
-        - Prioritários entram na frente da fila (depois dos outros prioritários).
-        - Normais entram no final.
+        Gera uma nova senha.
+        - Prioritário: insere no início da fila, mas depois de outros prioritários (ordem de chegada).
+        - Normal: insere no final da fila.
         """
-        prefixo = "P" if tipo == "Prioritário" else "N"
+        if config:
+            prefixo_normal = config.get("prefixo_normal", "N")
+            prefixo_prioritario = config.get("prefixo_prioritario", "P")
+        else:
+            prefixo_normal = "N"
+            prefixo_prioritario = "P"
+
+        prefixo = prefixo_prioritario if tipo == "Prioritário" else prefixo_normal
         numero = str(self.contador).zfill(3)
         senha = f"{prefixo}{numero}"
-        
+
         nova_senha = {
             "senha": senha,
             "tipo": tipo,
             "horario": datetime.now().strftime("%H:%M:%S"),
             "status": "Aguardando"
         }
-        
-        # Lógica de prioridade: Prioritários entram na frente, mas depois dos já existentes
+
+        # Lógica de prioridade
         if tipo == "Prioritário":
+            # Insere na posição: depois do último prioritário existente, mas antes dos normais
             insert_index = 0
             for i, s in enumerate(self.fila):
                 if s["tipo"] == "Prioritário":
-                    insert_index = i + 1  # Vai inserir depois do último prioritário
+                    insert_index = i + 1  # Vai para depois do último prioritário
             self.fila.insert(insert_index, nova_senha)
         else:
+            # Senha normal: vai para o final
             self.fila.append(nova_senha)
-        
+
         self.contador += 1
-        return senha
+        return senha    
     
     def chamar_proximo(self):
         """Remove e retorna a primeira senha da fila."""
@@ -86,7 +98,8 @@ class FilaSenhas:
         data_atual = datetime.now().strftime("%Y-%m-%d")
         nome_arquivo = f"relatorio_atendidos_{data_atual}.txt"
         
-        pasta = os.path.dirname(os.path.abspath(__file__))
+        pasta = obter_caminho_absoluto()
+        nome_arquivo = f"relatorio_atendidos_{data_atual}.txt"
         caminho_completo = os.path.join(pasta, nome_arquivo)
         
         with open(caminho_completo, "w", encoding="utf-8") as f:
