@@ -1,0 +1,8 @@
+RELATÓRIO DE ATENDIMENTOS - 2026-07-23
+========================================
+
+1º - Senha: P009 | Tipo: Prioritário | Atendido às: 12:03:06
+2º - Senha: P010 | Tipo: Prioritário | Atendido às: 12:03:20
+3º - Senha: P011 | Tipo: Prioritário | Atendido às: 12:03:24
+
+Total de atendimentos: 3

@@ -2,54 +2,82 @@
   "fila": [],
   "atendidas": [
     {
+      "senha": "P009",
+      "tipo": "Prioritário",
+      "horario": "12:09:25",
+      "status": "Atendido",
+      "horario_atendimento": "12:09:26"
+    },
+    {
+      "senha": "P010",
+      "tipo": "Prioritário",
+      "horario": "12:09:25",
+      "status": "Atendido",
+      "horario_atendimento": "12:09:27"
+    },
+    {
       "senha": "N001",
       "tipo": "Normal",
-      "horario": "11:08:22",
+      "horario": "12:09:22",
       "status": "Atendido",
-      "horario_atendimento": "11:08:25"
+      "horario_atendimento": "12:09:27"
     },
     {
       "senha": "N002",
       "tipo": "Normal",
-      "horario": "11:08:23",
+      "horario": "12:09:22",
       "status": "Atendido",
-      "horario_atendimento": "11:08:30"
+      "horario_atendimento": "12:09:28"
     },
     {
       "senha": "N003",
       "tipo": "Normal",
-      "horario": "11:08:24",
+      "horario": "12:09:22",
       "status": "Atendido",
-      "horario_atendimento": "11:08:39"
+      "horario_atendimento": "12:09:28"
     },
     {
-      "senha": "P004",
-      "tipo": "Prioritário",
-      "horario": "11:08:48",
+      "senha": "N004",
+      "tipo": "Normal",
+      "horario": "12:09:23",
       "status": "Atendido",
-      "horario_atendimento": "11:08:52"
+      "horario_atendimento": "12:09:29"
     },
     {
       "senha": "N005",
       "tipo": "Normal",
-      "horario": "11:08:49",
+      "horario": "12:09:23",
       "status": "Atendido",
-      "horario_atendimento": "11:08:56"
+      "horario_atendimento": "12:09:29"
     },
     {
       "senha": "N006",
       "tipo": "Normal",
-      "horario": "11:08:51",
+      "horario": "12:09:23",
       "status": "Atendido",
-      "horario_atendimento": "11:09:08"
+      "horario_atendimento": "12:09:30"
+    },
+    {
+      "senha": "N007",
+      "tipo": "Normal",
+      "horario": "12:09:23",
+      "status": "Atendido",
+      "horario_atendimento": "12:09:31"
+    },
+    {
+      "senha": "N008",
+      "tipo": "Normal",
+      "horario": "12:09:24",
+      "status": "Atendido",
+      "horario_atendimento": "12:09:31"
     }
   ],
-  "contador": 7,
+  "contador": 11,
   "ultima_chamada": {
-    "senha": "N006",
+    "senha": "N008",
     "tipo": "Normal",
-    "horario": "11:08:51",
+    "horario": "12:09:24",
     "status": "Atendido",
-    "horario_atendimento": "11:09:08"
+    "horario_atendimento": "12:09:31"
   }
 }

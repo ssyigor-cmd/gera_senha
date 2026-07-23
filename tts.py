@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 # Cache da voz (busca apenas uma vez)
 _voice_id = None
 _rate = 150
-_volume = 0.9
+_volume = 0.9  # fixo, removido do config
 
 def _get_voice_id():
     """Retorna o ID da voz em português (cache)."""
@@ -58,5 +58,5 @@ def falar(texto):
     thread.start()
 
 def encerrar_tts():
-    """Função vazia para compatibilidade."""
+    """Função vazia para compatibilidade (não há engine persistente)."""
     pass

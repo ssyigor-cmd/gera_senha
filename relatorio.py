@@ -1,11 +1,15 @@
 from banco import obter_caminho_absoluto
 import os
 from datetime import datetime
+import matplotlib
+matplotlib.use('Agg')  # Usa backend não interativo para salvar sem exibir
+import matplotlib.pyplot as plt
+import numpy as np
 
-def gerar_grafico_atendimentos(atendidas):
+def gerar_graficos(atendidas):
     """
-    Gera um relatório em .txt com as estatísticas.
-    (Versão simplificada, sem dependências de imagem)
+    Gera gráficos de barras e pizza com as estatísticas de atendimentos.
+    Retorna o caminho do arquivo de imagem salvo.
     """
     if not atendidas:
         return None
@@ -13,7 +17,7 @@ def gerar_grafico_atendimentos(atendidas):
     pasta = os.path.join(obter_caminho_absoluto(), "estatisticas")
     os.makedirs(pasta, exist_ok=True)
 
-    nome_arquivo = f"relatorio_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+    nome_arquivo = f"graficos_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
     caminho = os.path.join(pasta, nome_arquivo)
 
     # Contar por tipo
@@ -22,7 +26,7 @@ def gerar_grafico_atendimentos(atendidas):
         tipo = s.get("tipo", "Normal")
         tipos[tipo] = tipos.get(tipo, 0) + 1
 
-    # Contar por hora
+    # Contar por hora (opcional)
     horas = {}
     for s in atendidas:
         horario = s.get("horario_atendimento", "")
@@ -30,32 +34,40 @@ def gerar_grafico_atendimentos(atendidas):
             hora = horario[:2]
             horas[hora] = horas.get(hora, 0) + 1
 
-    with open(caminho, "w", encoding="utf-8") as f:
-        f.write("=" * 40 + "\n")
-        f.write("RELATÓRIO DE ATENDIMENTOS\n")
-        f.write(f"Gerado em: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n")
-        f.write("=" * 40 + "\n\n")
+    # Criar figura com 2 subplots
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+    fig.suptitle(f"Estatísticas de Atendimentos - {datetime.now().strftime('%d/%m/%Y')}", fontsize=16)
 
-        f.write(f"Total de atendimentos: {len(atendidas)}\n\n")
+    # Gráfico de barras: por tipo
+    tipos_ordenados = sorted(tipos.keys())
+    valores = [tipos[t] for t in tipos_ordenados]
+    cores = ['#1f77b4', '#ff7f0e']  # azul e laranja
+    ax1.bar(tipos_ordenados, valores, color=cores[:len(tipos_ordenados)])
+    ax1.set_title('Atendimentos por Tipo')
+    ax1.set_ylabel('Quantidade')
+    for i, v in enumerate(valores):
+        ax1.text(i, v + 0.1, str(v), ha='center', va='bottom')
 
-        f.write("Por tipo:\n")
-        for tipo, qtd in tipos.items():
-            f.write(f"  - {tipo}: {qtd} ({qtd/len(atendidas)*100:.1f}%)\n")
+    # Gráfico de pizza: distribuição percentual
+    if tipos:
+        ax2.pie(valores, labels=tipos_ordenados, autopct='%1.1f%%', startangle=90, colors=cores[:len(tipos_ordenados)])
+        ax2.set_title('Distribuição Percentual')
 
-        if horas:
-            f.write("\nAtendimentos por hora:\n")
-            for hora, qtd in sorted(horas.items()):
-                f.write(f"  - {hora}:00h → {qtd} atendimentos\n")
-
-        if atendidas:
-            primeiro = atendidas[0]
-            ultimo = atendidas[-1]
-            f.write(f"\nPrimeiro atendimento: {primeiro.get('senha')} às {primeiro.get('horario_atendimento', 'N/A')}\n")
-            f.write(f"Último atendimento: {ultimo.get('senha')} às {ultimo.get('horario_atendimento', 'N/A')}\n")
+    plt.tight_layout()
+    plt.savefig(caminho, dpi=100, bbox_inches='tight')
+    plt.close(fig)  # libera memória
 
     return caminho
 
+def gerar_grafico_atendimentos(atendidas):
+    """
+    Mantido para compatibilidade com chamadas antigas (se houver).
+    Agora chama gerar_graficos.
+    """
+    return gerar_graficos(atendidas)
+
 def calcular_tempo_medio(atendidas):
+    """Calcula o tempo médio de espera em minutos."""
     tempos = []
     for s in atendidas:
         if "horario" in s and "horario_atendimento" in s:
