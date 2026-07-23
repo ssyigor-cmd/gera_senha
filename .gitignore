@@ -1,12 +1,38 @@
-# Pastas geradas pelo PyInstaller
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs e dados do sistema
+app.log
+dados.json
+dados.json.tmp
+dados.json.corrompido.backup
+
+# Pastas geradas pelo programa
+comprovantes/
+estatisticas/
+
+# Arquivos de configuração local (opcional – mantenha config.json se quiser compartilhar)
+# config.json
+
+# PyInstaller
 dist/
 build/
 *.spec
 
-# Arquivos temporários do Python
-__pycache__/
-*.pyc
-*.pyo
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
 
-# Dados sensíveis (ou que não devem subir)
-dados.json
+# Arquivos temporários do Windows
+Thumbs.db
+desktop.ini
