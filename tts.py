@@ -1,45 +1,44 @@
 import pyttsx3
 import threading
 import time
+import logging
+
+logger = logging.getLogger(__name__)
 
 def falar(texto):
     """Fala o texto usando pyttsx3, recriando a engine a cada chamada."""
     def _falar():
         engine = None
         try:
-            # Cria uma engine NOVA a cada chamada
             engine = pyttsx3.init()
-            engine.setProperty('rate', 150)  # Velocidade da fala
-            engine.setProperty('volume', 0.9)  # Volume
+            engine.setProperty('rate', 150)
+            engine.setProperty('volume', 0.9)
             
-            # Configura voz em português (se disponível)
             try:
                 voices = engine.getProperty('voices')
                 for voice in voices:
                     if 'brazil' in voice.name.lower() or 'portuguese' in voice.name.lower():
                         engine.setProperty('voice', voice.id)
+                        logger.info(f"Voz selecionada: {voice.name}")
                         break
-            except:
-                pass  # Se falhar, usa a voz padrão
+            except Exception as e:
+                logger.warning(f"Não foi possível configurar voz em português: {e}")
             
-            # Fala e espera terminar
             engine.say(texto)
             engine.runAndWait()
-            
-            # Pequena pausa para garantir que a engine finalizou
             time.sleep(0.1)
+            logger.info(f"TTS executado com sucesso: '{texto}'")
             
         except Exception as e:
-            print(f"Erro no TTS: {e}")
+
+            logger.exception(f"Falha ao reproduzir TTS para o texto: '{texto}'. Erro: {e}")
         finally:
-            # Tenta finalizar a engine para liberar recursos
             if engine:
                 try:
                     engine.stop()
-                except:
-                    pass
+                except Exception as e:
+                    logger.warning(f"Erro ao parar engine de TTS: {e}")
     
-    # Roda em uma thread separada para não travar a interface
     thread = threading.Thread(target=_falar)
     thread.daemon = True
     thread.start()

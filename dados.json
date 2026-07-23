@@ -2,110 +2,61 @@
   "fila": [],
   "atendidas": [
     {
-      "senha": "P003",
-      "tipo": "Prioritário",
-      "horario": "10:16:06",
+      "senha": "N001",
+      "tipo": "Normal",
+      "horario": "09:32:42",
       "status": "Atendido",
-      "horario_atendimento": "10:16:12"
+      "horario_atendimento": "09:32:44"
     },
     {
       "senha": "P006",
       "tipo": "Prioritário",
-      "horario": "10:16:09",
+      "horario": "09:58:52",
       "status": "Atendido",
-      "horario_atendimento": "10:16:16"
+      "horario_atendimento": "09:58:55"
     },
     {
-      "senha": "N001",
-      "tipo": "Normal",
-      "horario": "10:16:04",
+      "senha": "P007",
+      "tipo": "Prioritário",
+      "horario": "09:58:53",
       "status": "Atendido",
-      "horario_atendimento": "10:16:34"
+      "horario_atendimento": "09:58:57"
     },
     {
       "senha": "N002",
       "tipo": "Normal",
-      "horario": "10:16:05",
+      "horario": "09:58:48",
       "status": "Atendido",
-      "horario_atendimento": "10:16:37"
+      "horario_atendimento": "09:59:00"
+    },
+    {
+      "senha": "N003",
+      "tipo": "Normal",
+      "horario": "09:58:50",
+      "status": "Atendido",
+      "horario_atendimento": "09:59:01"
     },
     {
       "senha": "N004",
       "tipo": "Normal",
-      "horario": "10:16:07",
+      "horario": "09:58:51",
       "status": "Atendido",
-      "horario_atendimento": "10:16:50"
+      "horario_atendimento": "09:59:03"
     },
     {
       "senha": "N005",
       "tipo": "Normal",
-      "horario": "10:16:08",
+      "horario": "09:58:51",
       "status": "Atendido",
-      "horario_atendimento": "10:16:54"
-    },
-    {
-      "senha": "P013",
-      "tipo": "Prioritário",
-      "horario": "10:17:06",
-      "status": "Atendido",
-      "horario_atendimento": "10:17:09"
-    },
-    {
-      "senha": "P014",
-      "tipo": "Prioritário",
-      "horario": "10:17:07",
-      "status": "Atendido",
-      "horario_atendimento": "10:17:13"
-    },
-    {
-      "senha": "N007",
-      "tipo": "Normal",
-      "horario": "10:17:04",
-      "status": "Atendido",
-      "horario_atendimento": "10:17:17"
-    },
-    {
-      "senha": "N008",
-      "tipo": "Normal",
-      "horario": "10:17:04",
-      "status": "Atendido",
-      "horario_atendimento": "10:17:39"
-    },
-    {
-      "senha": "N009",
-      "tipo": "Normal",
-      "horario": "10:17:04",
-      "status": "Atendido",
-      "horario_atendimento": "10:17:41"
-    },
-    {
-      "senha": "P015",
-      "tipo": "Prioritário",
-      "horario": "10:18:22",
-      "status": "Atendido",
-      "horario_atendimento": "10:18:24"
-    },
-    {
-      "senha": "N010",
-      "tipo": "Normal",
-      "horario": "10:17:05",
-      "status": "Atendido",
-      "horario_atendimento": "10:18:38"
-    },
-    {
-      "senha": "N011",
-      "tipo": "Normal",
-      "horario": "10:17:05",
-      "status": "Atendido",
-      "horario_atendimento": "10:18:59"
+      "horario_atendimento": "09:59:04"
     }
   ],
-  "contador": 16,
+  "contador": 8,
   "ultima_chamada": {
-    "senha": "N011",
+    "senha": "N005",
     "tipo": "Normal",
-    "horario": "10:17:05",
+    "horario": "09:58:51",
     "status": "Atendido",
-    "horario_atendimento": "10:18:59"
+    "horario_atendimento": "09:59:04"
   }
 }
