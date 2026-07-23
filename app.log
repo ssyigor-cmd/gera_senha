@@ -1,67 +1,85 @@
-2026-07-23 09:58:34 - __main__ - INFO - Configurações carregadas.
-2026-07-23 09:58:34 - banco - INFO - Dados carregados: 0 na fila, 1 atendidos.
-2026-07-23 09:58:34 - __main__ - INFO - Janela do paciente criada com sucesso.
-2026-07-23 09:58:34 - __main__ - INFO - Widgets da interface staff criados.
-2026-07-23 09:58:34 - banco - INFO - Dados salvos com sucesso. Fila: 0, Atendidos: 1
-2026-07-23 09:58:45 - __main__ - INFO - Configurações salvas pelo usuário.
-2026-07-23 09:58:48 - __main__ - INFO - Senha Normal gerada: N002
-2026-07-23 09:58:49 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 1
-2026-07-23 09:58:50 - __main__ - INFO - Senha Normal gerada: N003
-2026-07-23 09:58:50 - banco - INFO - Dados salvos com sucesso. Fila: 2, Atendidos: 1
-2026-07-23 09:58:51 - __main__ - INFO - Senha Normal gerada: N004
-2026-07-23 09:58:51 - banco - INFO - Dados salvos com sucesso. Fila: 3, Atendidos: 1
-2026-07-23 09:58:51 - __main__ - INFO - Senha Normal gerada: N005
-2026-07-23 09:58:52 - banco - INFO - Dados salvos com sucesso. Fila: 4, Atendidos: 1
-2026-07-23 09:58:52 - __main__ - INFO - Senha Prioritária gerada: P006
-2026-07-23 09:58:53 - banco - INFO - Dados salvos com sucesso. Fila: 5, Atendidos: 1
-2026-07-23 09:58:53 - __main__ - INFO - Senha Prioritária gerada: P007
-2026-07-23 09:58:54 - banco - INFO - Dados salvos com sucesso. Fila: 6, Atendidos: 1
-2026-07-23 09:58:55 - __main__ - INFO - Chamada da senha: P006
-2026-07-23 09:58:55 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'C:\\PROJETO\\gera_senha\\.venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
-2026-07-23 09:58:55 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'C:\PROJETO\gera_senha\.venv\Lib\site-packages\comtypes\gen'
-2026-07-23 09:58:56 - tts - INFO - Voz selecionada: Microsoft Maria Desktop - Portuguese(Brazil)
-2026-07-23 09:58:56 - banco - INFO - Dados salvos com sucesso. Fila: 5, Atendidos: 2
-2026-07-23 09:58:57 - __main__ - INFO - Chamada da senha: P007
-2026-07-23 09:58:57 - tts - INFO - Voz selecionada: Microsoft Maria Desktop - Portuguese(Brazil)
-2026-07-23 09:58:57 - tts - ERROR - Falha ao reproduzir TTS para o texto: 'Senha, P007'. Erro: run loop already started
-Traceback (most recent call last):
-  File "C:\PROJETO\gera_senha\tts.py", line 28, in _falar
-    engine.runAndWait()
-    ~~~~~~~~~~~~~~~~~^^
-  File "C:\PROJETO\gera_senha\.venv\Lib\site-packages\pyttsx3\engine.py", line 219, in runAndWait
-    raise RuntimeError(msg)
-RuntimeError: run loop already started
-2026-07-23 09:58:58 - tts - INFO - TTS executado com sucesso: 'Senha, P006'
-2026-07-23 09:58:58 - banco - INFO - Dados salvos com sucesso. Fila: 4, Atendidos: 3
-2026-07-23 09:59:00 - __main__ - INFO - Chamada da senha: N002
-2026-07-23 09:59:00 - tts - INFO - Voz selecionada: Microsoft Maria Desktop - Portuguese(Brazil)
-2026-07-23 09:59:00 - banco - INFO - Dados salvos com sucesso. Fila: 3, Atendidos: 4
-2026-07-23 09:59:02 - __main__ - INFO - Chamada da senha: N003
-2026-07-23 09:59:02 - tts - INFO - Voz selecionada: Microsoft Maria Desktop - Portuguese(Brazil)
-2026-07-23 09:59:02 - tts - ERROR - Falha ao reproduzir TTS para o texto: 'Senha, N003'. Erro: run loop already started
-Traceback (most recent call last):
-  File "C:\PROJETO\gera_senha\tts.py", line 28, in _falar
-    engine.runAndWait()
-    ~~~~~~~~~~~~~~~~~^^
-  File "C:\PROJETO\gera_senha\.venv\Lib\site-packages\pyttsx3\engine.py", line 219, in runAndWait
-    raise RuntimeError(msg)
-RuntimeError: run loop already started
-2026-07-23 09:59:02 - tts - INFO - TTS executado com sucesso: 'Senha, N002'
-2026-07-23 09:59:02 - banco - INFO - Dados salvos com sucesso. Fila: 2, Atendidos: 5
-2026-07-23 09:59:03 - __main__ - INFO - Chamada da senha: N004
-2026-07-23 09:59:03 - tts - INFO - Voz selecionada: Microsoft Maria Desktop - Portuguese(Brazil)
-2026-07-23 09:59:03 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 6
-2026-07-23 09:59:05 - __main__ - INFO - Chamada da senha: N005
-2026-07-23 09:59:05 - tts - INFO - Voz selecionada: Microsoft Maria Desktop - Portuguese(Brazil)
-2026-07-23 09:59:05 - tts - ERROR - Falha ao reproduzir TTS para o texto: 'Senha, N005'. Erro: run loop already started
-Traceback (most recent call last):
-  File "C:\PROJETO\gera_senha\tts.py", line 28, in _falar
-    engine.runAndWait()
-    ~~~~~~~~~~~~~~~~~^^
-  File "C:\PROJETO\gera_senha\.venv\Lib\site-packages\pyttsx3\engine.py", line 219, in runAndWait
-    raise RuntimeError(msg)
-RuntimeError: run loop already started
-2026-07-23 09:59:05 - tts - INFO - TTS executado com sucesso: 'Senha, N004'
-2026-07-23 09:59:05 - banco - INFO - Dados salvos com sucesso. Fila: 0, Atendidos: 7
-2026-07-23 09:59:06 - __main__ - WARNING - Tentativa de chamar próximo com fila vazia.
-2026-07-23 09:59:06 - banco - INFO - Dados salvos com sucesso. Fila: 0, Atendidos: 7
+2026-07-23 11:05:51 - __main__ - INFO - Configurações carregadas.
+2026-07-23 11:05:51 - banco - INFO - Dados carregados: 1 na fila, 5 atendidos.
+2026-07-23 11:05:52 - __main__ - INFO - Janela do paciente criada com sucesso.
+2026-07-23 11:05:52 - __main__ - INFO - Widgets da interface staff criados.
+2026-07-23 11:05:52 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 5
+2026-07-23 11:05:57 - __main__ - INFO - Senha Normal gerada: N007
+2026-07-23 11:05:59 - banco - INFO - Dados salvos com sucesso. Fila: 2, Atendidos: 5
+2026-07-23 11:06:01 - __main__ - INFO - Senha Normal gerada: N008
+2026-07-23 11:06:02 - banco - INFO - Dados salvos com sucesso. Fila: 3, Atendidos: 5
+2026-07-23 11:06:03 - __main__ - INFO - Senha Prioritária gerada: P009
+2026-07-23 11:06:03 - banco - INFO - Dados salvos com sucesso. Fila: 4, Atendidos: 5
+2026-07-23 11:06:05 - __main__ - INFO - Chamada da senha: P009
+2026-07-23 11:06:05 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'C:\\PROJETO\\gera_senha\\.venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-23 11:06:05 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'C:\PROJETO\gera_senha\.venv\Lib\site-packages\comtypes\gen'
+2026-07-23 11:06:05 - tts - INFO - Voz TTS selecionada: Microsoft Maria Desktop - Portuguese(Brazil)
+2026-07-23 11:06:07 - banco - INFO - Dados salvos com sucesso. Fila: 3, Atendidos: 6
+2026-07-23 11:06:09 - tts - INFO - TTS executado: 'Senha, P009'
+2026-07-23 11:06:10 - __main__ - INFO - Chamada da senha: N005
+2026-07-23 11:06:10 - tts - INFO - TTS executado: 'Senha, N005'
+2026-07-23 11:06:11 - banco - INFO - Dados salvos com sucesso. Fila: 2, Atendidos: 7
+2026-07-23 11:06:16 - __main__ - INFO - Chamada da senha: N007
+2026-07-23 11:06:16 - tts - INFO - TTS executado: 'Senha, N007'
+2026-07-23 11:06:17 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 8
+2026-07-23 11:06:18 - __main__ - INFO - Rechamada da senha: N007
+2026-07-23 11:06:19 - tts - INFO - TTS executado: 'Senha N007, favor se dirigir ao balcão'
+2026-07-23 11:06:19 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 8
+2026-07-23 11:06:21 - __main__ - INFO - Rechamada da senha: N007
+2026-07-23 11:06:21 - tts - INFO - TTS executado: 'Senha N007, favor se dirigir ao balcão'
+2026-07-23 11:06:22 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 8
+2026-07-23 11:06:23 - __main__ - INFO - Chamada da senha: N008
+2026-07-23 11:06:23 - tts - INFO - TTS executado: 'Senha, N008'
+2026-07-23 11:06:24 - banco - INFO - Dados salvos com sucesso. Fila: 0, Atendidos: 9
+2026-07-23 11:08:15 - __main__ - INFO - Configurações carregadas.
+2026-07-23 11:08:16 - banco - INFO - Dados carregados: 0 na fila, 9 atendidos.
+2026-07-23 11:08:16 - __main__ - INFO - Janela do paciente criada com sucesso.
+2026-07-23 11:08:16 - __main__ - INFO - Widgets da interface staff criados.
+2026-07-23 11:08:16 - banco - INFO - Dados salvos com sucesso. Fila: 0, Atendidos: 9
+2026-07-23 11:08:20 - __main__ - INFO - Reset do dia executado.
+2026-07-23 11:08:21 - banco - INFO - Dados salvos com sucesso. Fila: 0, Atendidos: 0
+2026-07-23 11:08:22 - __main__ - INFO - Senha Normal gerada: N001
+2026-07-23 11:08:22 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 0
+2026-07-23 11:08:23 - __main__ - INFO - Senha Normal gerada: N002
+2026-07-23 11:08:23 - banco - INFO - Dados salvos com sucesso. Fila: 2, Atendidos: 0
+2026-07-23 11:08:24 - __main__ - INFO - Senha Normal gerada: N003
+2026-07-23 11:08:24 - banco - INFO - Dados salvos com sucesso. Fila: 3, Atendidos: 0
+2026-07-23 11:08:26 - __main__ - INFO - Chamada da senha: N001
+2026-07-23 11:08:26 - comtypes.client._code_cache - INFO - Imported existing <module 'comtypes.gen' from 'C:\\PROJETO\\gera_senha\\.venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-23 11:08:26 - comtypes.client._code_cache - INFO - Using writeable comtypes cache directory: 'C:\PROJETO\gera_senha\.venv\Lib\site-packages\comtypes\gen'
+2026-07-23 11:08:26 - tts - INFO - Voz TTS selecionada: Microsoft Maria Desktop - Portuguese(Brazil)
+2026-07-23 11:08:28 - banco - INFO - Dados salvos com sucesso. Fila: 2, Atendidos: 1
+2026-07-23 11:08:29 - tts - INFO - TTS executado: 'Senha, N001'
+2026-07-23 11:08:30 - __main__ - INFO - Chamada da senha: N002
+2026-07-23 11:08:33 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 2
+2026-07-23 11:08:34 - tts - INFO - TTS executado: 'Senha, N002'
+2026-07-23 11:08:34 - __main__ - INFO - Rechamada da senha: N002
+2026-07-23 11:08:36 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 2
+2026-07-23 11:08:39 - __main__ - INFO - Chamada da senha: N003
+2026-07-23 11:08:41 - banco - INFO - Dados salvos com sucesso. Fila: 0, Atendidos: 3
+2026-07-23 11:08:43 - tts - INFO - TTS executado: 'Senha, N003'
+2026-07-23 11:08:43 - tts - INFO - TTS executado: 'Senha N002, favor se dirigir ao balcão'
+2026-07-23 11:08:43 - __main__ - INFO - Rechamada da senha: N003
+2026-07-23 11:08:46 - banco - INFO - Dados salvos com sucesso. Fila: 0, Atendidos: 3
+2026-07-23 11:08:48 - __main__ - INFO - Senha Prioritária gerada: P004
+2026-07-23 11:08:48 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 3
+2026-07-23 11:08:49 - tts - INFO - TTS executado: 'Senha N003, favor se dirigir ao balcão'
+2026-07-23 11:08:49 - __main__ - INFO - Senha Normal gerada: N005
+2026-07-23 11:08:50 - banco - INFO - Dados salvos com sucesso. Fila: 2, Atendidos: 3
+2026-07-23 11:08:51 - __main__ - INFO - Senha Normal gerada: N006
+2026-07-23 11:08:51 - banco - INFO - Dados salvos com sucesso. Fila: 3, Atendidos: 3
+2026-07-23 11:08:52 - __main__ - INFO - Chamada da senha: P004
+2026-07-23 11:08:55 - banco - INFO - Dados salvos com sucesso. Fila: 2, Atendidos: 4
+2026-07-23 11:08:56 - tts - INFO - TTS executado: 'Senha, P004'
+2026-07-23 11:08:57 - __main__ - INFO - Chamada da senha: N005
+2026-07-23 11:08:58 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 5
+2026-07-23 11:09:01 - tts - INFO - TTS executado: 'Senha, N005'
+2026-07-23 11:09:01 - __main__ - INFO - Rechamada da senha: N005
+2026-07-23 11:09:03 - banco - INFO - Dados salvos com sucesso. Fila: 1, Atendidos: 5
+2026-07-23 11:09:07 - tts - INFO - TTS executado: 'Senha N005, favor se dirigir ao balcão'
+2026-07-23 11:09:09 - __main__ - INFO - Chamada da senha: N006
+2026-07-23 11:09:10 - banco - INFO - Dados salvos com sucesso. Fila: 0, Atendidos: 6
+2026-07-23 11:10:10 - __main__ - INFO - Configurações carregadas.
+2026-07-23 11:10:10 - banco - INFO - Dados carregados: 0 na fila, 6 atendidos.
+2026-07-23 11:10:10 - __main__ - INFO - Janela do paciente criada com sucesso.
+2026-07-23 11:10:10 - __main__ - INFO - Widgets da interface staff criados.
+2026-07-23 11:10:10 - banco - INFO - Dados salvos com sucesso. Fila: 0, Atendidos: 6

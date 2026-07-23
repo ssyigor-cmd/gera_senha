@@ -4,59 +4,52 @@
     {
       "senha": "N001",
       "tipo": "Normal",
-      "horario": "09:32:42",
+      "horario": "11:08:22",
       "status": "Atendido",
-      "horario_atendimento": "09:32:44"
-    },
-    {
-      "senha": "P006",
-      "tipo": "Prioritário",
-      "horario": "09:58:52",
-      "status": "Atendido",
-      "horario_atendimento": "09:58:55"
-    },
-    {
-      "senha": "P007",
-      "tipo": "Prioritário",
-      "horario": "09:58:53",
-      "status": "Atendido",
-      "horario_atendimento": "09:58:57"
+      "horario_atendimento": "11:08:25"
     },
     {
       "senha": "N002",
       "tipo": "Normal",
-      "horario": "09:58:48",
+      "horario": "11:08:23",
       "status": "Atendido",
-      "horario_atendimento": "09:59:00"
+      "horario_atendimento": "11:08:30"
     },
     {
       "senha": "N003",
       "tipo": "Normal",
-      "horario": "09:58:50",
+      "horario": "11:08:24",
       "status": "Atendido",
-      "horario_atendimento": "09:59:01"
+      "horario_atendimento": "11:08:39"
     },
     {
-      "senha": "N004",
-      "tipo": "Normal",
-      "horario": "09:58:51",
+      "senha": "P004",
+      "tipo": "Prioritário",
+      "horario": "11:08:48",
       "status": "Atendido",
-      "horario_atendimento": "09:59:03"
+      "horario_atendimento": "11:08:52"
     },
     {
       "senha": "N005",
       "tipo": "Normal",
-      "horario": "09:58:51",
+      "horario": "11:08:49",
       "status": "Atendido",
-      "horario_atendimento": "09:59:04"
+      "horario_atendimento": "11:08:56"
+    },
+    {
+      "senha": "N006",
+      "tipo": "Normal",
+      "horario": "11:08:51",
+      "status": "Atendido",
+      "horario_atendimento": "11:09:08"
     }
   ],
-  "contador": 8,
+  "contador": 7,
   "ultima_chamada": {
-    "senha": "N005",
+    "senha": "N006",
     "tipo": "Normal",
-    "horario": "09:58:51",
+    "horario": "11:08:51",
     "status": "Atendido",
-    "horario_atendimento": "09:59:04"
+    "horario_atendimento": "11:09:08"
   }
 }

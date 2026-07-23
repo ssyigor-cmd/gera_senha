@@ -394,10 +394,12 @@ class SistemaSenhasGUI:
                 self.sistema.contador,
                 self.sistema.ultima_chamada
             )
-            logger.info("Dados salvos ao sair. Encerrando aplicação.")
+            from tts import encerrar_tts
+            encerrar_tts()
+            logger.info("Sistema encerrado normalmente.")
             self.janela_staff.destroy()
         except Exception as e:
-            logger.exception(f"Erro ao sair: {e}")
+            logger.exception(f"Erro ao salvar e sair: {e}")
             self.janela_staff.destroy()
 
     def abrir_ajustes(self):

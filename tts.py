@@ -1,44 +1,62 @@
+# tts.py
 import pyttsx3
 import threading
-import time
 import logging
 
 logger = logging.getLogger(__name__)
 
+# Cache da voz (busca apenas uma vez)
+_voice_id = None
+_rate = 150
+_volume = 0.9
+
+def _get_voice_id():
+    """Retorna o ID da voz em português (cache)."""
+    global _voice_id
+    if _voice_id is None:
+        try:
+            temp_engine = pyttsx3.init()
+            voices = temp_engine.getProperty('voices')
+            for voice in voices:
+                if 'brazil' in voice.name.lower() or 'portuguese' in voice.name.lower():
+                    _voice_id = voice.id
+                    logger.info(f"Voz TTS selecionada: {voice.name}")
+                    break
+            temp_engine.stop()
+        except Exception as e:
+            logger.warning(f"Erro ao buscar vozes: {e}")
+    return _voice_id
+
 def falar(texto):
-    """Fala o texto usando pyttsx3, recriando a engine a cada chamada."""
+    """Fala o texto usando uma nova engine a cada chamada."""
     def _falar():
         engine = None
         try:
             engine = pyttsx3.init()
-            engine.setProperty('rate', 150)
-            engine.setProperty('volume', 0.9)
+            engine.setProperty('rate', _rate)
+            engine.setProperty('volume', _volume)
             
-            try:
-                voices = engine.getProperty('voices')
-                for voice in voices:
-                    if 'brazil' in voice.name.lower() or 'portuguese' in voice.name.lower():
-                        engine.setProperty('voice', voice.id)
-                        logger.info(f"Voz selecionada: {voice.name}")
-                        break
-            except Exception as e:
-                logger.warning(f"Não foi possível configurar voz em português: {e}")
+            voice_id = _get_voice_id()
+            if voice_id:
+                engine.setProperty('voice', voice_id)
             
             engine.say(texto)
             engine.runAndWait()
-            time.sleep(0.1)
-            logger.info(f"TTS executado com sucesso: '{texto}'")
+            logger.info(f"TTS executado: '{texto}'")
             
         except Exception as e:
-
-            logger.exception(f"Falha ao reproduzir TTS para o texto: '{texto}'. Erro: {e}")
+            logger.exception(f"Erro ao reproduzir TTS: {e}")
         finally:
             if engine:
                 try:
                     engine.stop()
-                except Exception as e:
-                    logger.warning(f"Erro ao parar engine de TTS: {e}")
-    
+                except:
+                    pass
+
     thread = threading.Thread(target=_falar)
     thread.daemon = True
     thread.start()
+
+def encerrar_tts():
+    """Função vazia para compatibilidade."""
+    pass
