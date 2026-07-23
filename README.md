@@ -1,10 +1,11 @@
-# Sistema de Gerenciamento de Senhas
-
-Sistema desktop para controle de fila de atendimento, com suporte a **senhas prioritárias**, **chamada por voz (TTS)**, **impressão de comprovantes**, **persistência de dados** e **dual-screen** (painel do operador + tela do cliente).
-
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![CustomTkinter](https://img.shields.io/badge/GUI-CustomTkinter-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+````markdown
+# Sistema de Gerenciamento de Senhas
+
+Sistema desktop para controle de fila de atendimento, com suporte a **senhas prioritárias**, **chamada por voz (TTS)**, **impressão de comprovantes**, **persistência de dados** e **dual-screen** (painel do operador + tela do cliente).
 
 ---
 
