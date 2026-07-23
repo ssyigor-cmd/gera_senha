@@ -1,4 +1,3 @@
-````markdown
 # 🏥 Sistema de Gerenciamento de Senhas
 
 Sistema desktop para controle de fila de atendimento, com suporte a **senhas prioritárias**, **chamada por voz (TTS)**, **impressão de comprovantes**, **persistência de dados** e **dual-screen** (painel do operador + tela do cliente).
