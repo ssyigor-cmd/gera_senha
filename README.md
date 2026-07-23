@@ -2,41 +2,52 @@
 ![CustomTkinter](https://img.shields.io/badge/GUI-CustomTkinter-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-````markdown
-# Sistema de Gerenciamento de Senhas
+markdown
+# Sistema de Senhas
 
-Sistema desktop para controle de fila de atendimento, com suporte a **senhas prioritárias**, **chamada por voz (TTS)**, **impressão de comprovantes**, **persistência de dados** e **dual-screen** (painel do operador + tela do cliente).
+Sistema desktop para gerenciar fila de atendimento com senhas normais e prioritárias.
 
----
+## Como usar
 
-## 📋 Funcionalidades
+1. Instale as dependências:
+pip install customtkinter pyttsx3 pypiwin32
 
-- ✅ **Geração de senhas** (Normal e Prioritária) com prefixos personalizáveis.
-- ⭐ **Fila inteligente**: Prioritários sempre atendidos antes dos normais, mantendo ordem de chegada entre eles.
-- 📢 **Chamada por voz (TTS)**: Anuncia a senha em português (configurável).
-- 🔔 **Sinal sonoro (Beep)** ao chamar o próximo.
-- 🖥️ **Tela dupla**: Painel de controle para o operador + tela de exibição para o cliente (última senha e próximos).
-- 🖨️ **Impressão de comprovante**: Suporte a impressoras térmicas Windows (fallback para arquivo `.txt`).
-- 💾 **Persistência automática**: Dados salvos em JSON a cada ação, com backup automático em caso de corrupção.
-- 📊 **Relatórios e Estatísticas**: Relatórios diários em `.txt` com totais, distribuição por tipo, horários e tempo médio de espera.
-- ⚙️ **Configurações flexíveis**: Prefixos, som, voz, impressora, tema (Dark/Light) e **nome do estabelecimento** (personalizável).
-- 📝 **Sistema de Logs**: Registro detalhado de ações e erros no arquivo `app.log`.
+text
 
----
+2. Execute:
+python gui_app.py
 
-## 🖥️ Capturas de Tela (Sugestão)
+text
 
-> *Adicione aqui imagens do sistema em execução.*
+## Funcionalidades
 
----
+- Gerar senhas Normal e Prioritária
+- Chamar próximo com voz e beep
+- Tela para o cliente mostrar a senha atual
+- Impressão de comprovante (térmica ou .txt)
+- Salva os dados automaticamente
+- Relatórios e estatísticas
+- Ajustes de prefixo, som, tema e impressora
 
-## 🚀 Como Executar
+## Arquivos principais
 
-### 📦 Pré-requisitos
-- Python 3.8 ou superior.
-- (Opcional) Impressora térmica configurada no Windows.
+| Arquivo | O que faz |
+|---------|-----------|
+| `gui_app.py` | Interface gráfica |
+| `senhas.py` | Lógica da fila |
+| `banco.py` | Salvar/carregar dados |
+| `config.py` | Configurações |
+| `tts.py` | Voz (Text-to-Speech) |
+| `impressao.py` | Impressão |
+| `relatorio.py` | Estatísticas |
+| `logger.py` | Logs de erro |
 
-### 1. Clone o repositório
-```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+## Gerar executável
+pip install pyinstaller
+pyinstaller --onefile --windowed --add-data "config.json;." gui_app.py
+
+text
+
+## Licença
+
+MIT
